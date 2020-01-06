@@ -11,7 +11,8 @@ import {
 export enum GameStatus {
     normal,
     win,
-    help
+    help,
+    about
 }
 
 enum MessageType {
@@ -161,6 +162,11 @@ export const gameReducer = (
             return {
                 ...state,
                 status: action.payload ? GameStatus.help : GameStatus.normal
+            };
+        case GameActionTypes.DisplayAbout:
+            return {
+                ...state,
+                status: action.payload ? GameStatus.about : GameStatus.normal
             };
         default:
             return state;

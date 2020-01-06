@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PageHeader, Menu, Button, Dropdown, Icon, Tag } from 'antd';
 import { StoreState } from '../reducers';
 import { calcExpInfo } from '../utils/calc';
-import { displayHelp, resetGame } from '../actions';
+import { displayHelp, displayAbout, resetGame } from '../actions';
 import { Player, Npc } from '../reducers/game';
 
 interface AppProps {
@@ -13,6 +13,7 @@ interface AppProps {
     npcs: Npc[];
     resetGame: typeof resetGame;
     displayHelp: typeof displayHelp;
+    displayAbout: typeof displayAbout;
 }
 
 const _Header = ({
@@ -21,6 +22,7 @@ const _Header = ({
     score,
     npcs,
     displayHelp,
+    displayAbout,
     resetGame
 }: AppProps) => {
     const { name, level, avatarUrl, exp } = player;
@@ -31,6 +33,7 @@ const _Header = ({
                 Instructions
             </Menu.Item>
             <Menu.Item onClick={resetGame}>Restart Game</Menu.Item>
+            <Menu.Item onClick={() => displayAbout(true)}>About</Menu.Item>
         </Menu>
     );
 
@@ -101,6 +104,8 @@ const mapStateToProps = ({
     };
 };
 
-export const Header = connect(mapStateToProps, { displayHelp, resetGame })(
-    _Header
-);
+export const Header = connect(mapStateToProps, {
+    displayHelp,
+    displayAbout,
+    resetGame
+})(_Header);

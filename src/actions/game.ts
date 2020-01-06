@@ -19,6 +19,11 @@ export interface DisplayHelpAction {
     payload: boolean;
 }
 
+export interface DisplayAboutAction {
+    type: GameActionTypes.DisplayAbout;
+    payload: boolean;
+}
+
 export const resetGame = (): ResetGameAction => ({
     type: GameActionTypes.ResetGame
 });
@@ -37,5 +42,10 @@ export const playBeerPong = (npcId: number): PlayBeerPongAction => ({
 
 export const displayHelp = (isDisplay: boolean): DisplayHelpAction => ({
     type: GameActionTypes.DisplayHelp,
+    payload: isDisplay
+});
+
+export const displayAbout = (isDisplay: boolean): DisplayAboutAction => ({
+    type: GameActionTypes.DisplayAbout,
     payload: isDisplay
 });

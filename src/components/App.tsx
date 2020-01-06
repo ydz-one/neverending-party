@@ -4,6 +4,7 @@ import { Board } from './Board';
 import { Header } from './Header';
 import { ActionCard } from './ActionCard';
 import { HelpModal } from './HelpModal';
+import { AboutModal } from './AboutModal';
 import { WinModal } from './WinModal';
 
 class _App extends Component {
@@ -14,6 +15,7 @@ class _App extends Component {
                 <Board />
                 <ActionCard />
                 <HelpModal />
+                <AboutModal />
                 <WinModal />
             </div>
         );
