@@ -34,7 +34,7 @@ const _ActionCard = ({ player, npc, playBeerPong }: AppProps) => {
                                   player.level,
                                   npc.level
                               )}% probability of win)`
-                            : 'Already Saved from Curse'}
+                            : 'Already saved from curse'}
                     </Button>
                 </div>
             </Card>

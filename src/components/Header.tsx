@@ -1,40 +1,57 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PageHeader, Menu, Button, Dropdown, Icon, Tag } from 'antd';
-import { GameState } from '../reducers/game';
 import { StoreState } from '../reducers';
 import { calcExpInfo } from '../utils/calc';
+import { displayHelp, resetGame } from '../actions';
+import { Player, Npc } from '../reducers/game';
 
-interface AppProps {}
+interface AppProps {
+    player: Player;
+    turns: number;
+    score: number;
+    npcs: Npc[];
+    resetGame: typeof resetGame;
+    displayHelp: typeof displayHelp;
+}
 
-const menu = (
-    <Menu>
-        <Menu.Item>Instructions</Menu.Item>
-        <Menu.Item>High Score</Menu.Item>
-    </Menu>
-);
-
-const DropdownMenu = () => (
-    <Dropdown key="more" overlay={menu}>
-        <Button
-            style={{
-                border: 'none',
-                padding: 0
-            }}
-        >
-            <Icon
-                type="ellipsis"
-                style={{
-                    fontSize: 20,
-                    verticalAlign: 'top'
-                }}
-            />
-        </Button>
-    </Dropdown>
-);
-
-const _Header = ({ player, turns, score, npcs }: GameState) => {
+const _Header = ({
+    player,
+    turns,
+    score,
+    npcs,
+    displayHelp,
+    resetGame
+}: AppProps) => {
     const { name, level, avatarUrl, exp } = player;
+
+    const menu = (
+        <Menu>
+            <Menu.Item onClick={() => displayHelp(true)}>
+                Instructions
+            </Menu.Item>
+            <Menu.Item onClick={resetGame}>Restart Game</Menu.Item>
+        </Menu>
+    );
+
+    const DropdownMenu = () => (
+        <Dropdown key="more" overlay={menu}>
+            <Button
+                style={{
+                    border: 'none',
+                    padding: 0
+                }}
+            >
+                <Icon
+                    type="ellipsis"
+                    style={{
+                        fontSize: 20,
+                        verticalAlign: 'top'
+                    }}
+                />
+            </Button>
+        </Dropdown>
+    );
 
     return (
         <PageHeader
@@ -53,11 +70,11 @@ const _Header = ({ player, turns, score, npcs }: GameState) => {
                 <Tag
                     key="turns"
                     className="header-extra-stat"
-                >{`Turns: ${turns}`}</Tag>,
+                >{`turns: ${turns}`}</Tag>,
                 <Tag
                     key="score"
                     className="header-extra-stat"
-                >{`Students Saved: ${score}/${npcs.length}`}</Tag>,
+                >{`students saved: ${score}/${npcs.length}`}</Tag>,
                 <DropdownMenu key="more" />
             ]}
             avatar={{
@@ -67,6 +84,23 @@ const _Header = ({ player, turns, score, npcs }: GameState) => {
     );
 };
 
-const mapStateToProps = ({ game }: StoreState): GameState => game;
+const mapStateToProps = ({
+    game
+}: StoreState): {
+    player: Player;
+    turns: number;
+    score: number;
+    npcs: Npc[];
+} => {
+    const { player, turns, score, npcs } = game;
+    return {
+        player,
+        turns,
+        score,
+        npcs
+    };
+};
 
-export const Header = connect(mapStateToProps)(_Header);
+export const Header = connect(mapStateToProps, { displayHelp, resetGame })(
+    _Header
+);

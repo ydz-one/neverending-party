@@ -38,7 +38,7 @@ const npcData: { name: string; level: number; friends: number[] }[] = [
 
 export const getInitialGameState = (): GameState => {
     return {
-        status: GameStatus.normal,
+        status: GameStatus.help,
         turns: 0,
         score: 0,
         player: {

@@ -44,7 +44,7 @@ export const calcOutcome = (winChance: number): boolean => {
     return roll <= winChance;
 };
 
-const chanceOfFriendSave = 30;
+export const chanceOfFriendSave = 30;
 
 export const calcAdditonalSaved = (
     npcs: Npc[],
