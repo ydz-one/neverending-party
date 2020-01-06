@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { PageHeader, Menu, Button, Dropdown, Icon, Tag } from 'antd';
 import { GameState } from '../reducers/game';
 import { StoreState } from '../reducers';
-import { calcNextLvlExp } from '../utils/calc';
+import { calcExpInfo } from '../utils/calc';
 
 interface AppProps {}
 
@@ -44,12 +44,20 @@ const _Header = ({ player, turns, score, npcs }: GameState) => {
                 background: '#fff'
             }}
             tags={[
-                <Tag color="blue">{`lvl: ${level}`}</Tag>,
-                <Tag color="blue">{`exp: ${exp}/${calcNextLvlExp(exp)}`}</Tag>
+                <Tag key="level" color="blue">{`lvl: ${level}`}</Tag>,
+                <Tag key="exp" color="blue">{`exp: ${exp}/${
+                    calcExpInfo(exp).nextLvlExp
+                }`}</Tag>
             ]}
             extra={[
-                <Tag className="header-extra-stat">{`Turns: ${turns}`}</Tag>,
-                <Tag className="header-extra-stat">{`Students Saved: ${score}/${npcs.length}`}</Tag>,
+                <Tag
+                    key="turns"
+                    className="header-extra-stat"
+                >{`Turns: ${turns}`}</Tag>,
+                <Tag
+                    key="score"
+                    className="header-extra-stat"
+                >{`Students Saved: ${score}/${npcs.length}`}</Tag>,
                 <DropdownMenu key="more" />
             ]}
             avatar={{

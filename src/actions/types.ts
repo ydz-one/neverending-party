@@ -1,18 +1,10 @@
-import {
-    ResetGameAction,
-    selectNpcAction,
-    PlayBeerPongAction,
-    DrinkWaterAction,
-    VomitAction
-} from './game';
+import { ResetGameAction, selectNpcAction, PlayBeerPongAction } from './game';
 import { ScreenShowAction, AddHighScoreAction } from './meta';
 
 export enum GameActionTypes {
     ResetGame,
     SelectNpc,
-    PlayBeerPong,
-    DrinkWater,
-    Vomit
+    PlayBeerPong
 }
 
 export enum MetaActionTypes {
@@ -21,11 +13,6 @@ export enum MetaActionTypes {
     AddHighScore
 }
 
-export type GameAction =
-    | ResetGameAction
-    | selectNpcAction
-    | PlayBeerPongAction
-    | DrinkWaterAction
-    | VomitAction;
+export type GameAction = ResetGameAction | selectNpcAction | PlayBeerPongAction;
 
 export type MetaAction = ScreenShowAction | AddHighScoreAction;

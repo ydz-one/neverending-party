@@ -27,12 +27,14 @@ const options = {
 };
 
 const _Board = ({ npcs, selectNpc }: AppProps) => {
-    const nodes = npcs.map((npc, id) => ({
-        id,
-        label: `${npc.name} (lvl: ${npc.level})`,
-        image: npc.avatarUrl,
-        shape: 'image'
-    }));
+    const nodes = npcs.map(
+        ({ name, level, avatarUrl, avatarSavedUrl, isCursed }, id) => ({
+            id,
+            label: `${name} (lvl: ${level})`,
+            image: isCursed ? avatarUrl : avatarSavedUrl,
+            shape: 'image'
+        })
+    );
 
     const edges: { to: number; from: number }[] = [];
     npcs.forEach((npc, id) => {
@@ -49,7 +51,6 @@ const _Board = ({ npcs, selectNpc }: AppProps) => {
     const events = {
         select: function(event: any) {
             const { nodes } = event;
-            console.log(nodes);
             let npcId;
             if (nodes && nodes.length) {
                 npcId = nodes[0];

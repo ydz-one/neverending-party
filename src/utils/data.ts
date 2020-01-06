@@ -45,14 +45,13 @@ export const getInitialGameState = (): GameState => {
             name: playerName,
             avatarUrl: avatars.player,
             level: 1,
-            exp: 0,
-            drunk: 0,
-            water: 0
+            exp: 0
         },
         npcs: npcData.map(({ name, level, friends }, id) => ({
             id,
             name,
             avatarUrl: avatars.npc[id],
+            avatarSavedUrl: avatars.npcChecked[id],
             level,
             isCursed: true,
             friends
