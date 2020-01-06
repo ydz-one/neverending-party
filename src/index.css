@@ -14,8 +14,8 @@ code {
 
 .action-card {
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 24px;
+    right: 24px;
     z-index: 1;
 }
 
