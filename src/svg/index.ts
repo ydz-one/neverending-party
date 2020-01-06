@@ -29,6 +29,36 @@ import avatar27 from './npc27.svg';
 import avatar28 from './npc28.svg';
 import avatar29 from './npc29.svg';
 import avatar30 from './npc30.svg';
+import avatarChecked1 from './npc-checked1.svg';
+import avatarChecked2 from './npc-checked2.svg';
+import avatarChecked3 from './npc-checked3.svg';
+import avatarChecked4 from './npc-checked4.svg';
+import avatarChecked5 from './npc-checked5.svg';
+import avatarChecked6 from './npc-checked6.svg';
+import avatarChecked7 from './npc-checked7.svg';
+import avatarChecked8 from './npc-checked8.svg';
+import avatarChecked9 from './npc-checked9.svg';
+import avatarChecked10 from './npc-checked10.svg';
+import avatarChecked11 from './npc-checked11.svg';
+import avatarChecked12 from './npc-checked12.svg';
+import avatarChecked13 from './npc-checked13.svg';
+import avatarChecked14 from './npc-checked14.svg';
+import avatarChecked15 from './npc-checked15.svg';
+import avatarChecked16 from './npc-checked16.svg';
+import avatarChecked17 from './npc-checked17.svg';
+import avatarChecked18 from './npc-checked18.svg';
+import avatarChecked19 from './npc-checked19.svg';
+import avatarChecked20 from './npc-checked20.svg';
+import avatarChecked21 from './npc-checked21.svg';
+import avatarChecked22 from './npc-checked22.svg';
+import avatarChecked23 from './npc-checked23.svg';
+import avatarChecked24 from './npc-checked24.svg';
+import avatarChecked25 from './npc-checked25.svg';
+import avatarChecked26 from './npc-checked26.svg';
+import avatarChecked27 from './npc-checked27.svg';
+import avatarChecked28 from './npc-checked28.svg';
+import avatarChecked29 from './npc-checked29.svg';
+import avatarChecked30 from './npc-checked30.svg';
 
 export const avatars = {
     player,
@@ -63,5 +93,37 @@ export const avatars = {
         avatar28,
         avatar29,
         avatar30
+    ],
+    npcChecked: [
+        avatarChecked1,
+        avatarChecked2,
+        avatarChecked3,
+        avatarChecked4,
+        avatarChecked5,
+        avatarChecked6,
+        avatarChecked7,
+        avatarChecked8,
+        avatarChecked9,
+        avatarChecked10,
+        avatarChecked11,
+        avatarChecked12,
+        avatarChecked13,
+        avatarChecked14,
+        avatarChecked15,
+        avatarChecked16,
+        avatarChecked17,
+        avatarChecked18,
+        avatarChecked19,
+        avatarChecked20,
+        avatarChecked21,
+        avatarChecked22,
+        avatarChecked23,
+        avatarChecked24,
+        avatarChecked25,
+        avatarChecked26,
+        avatarChecked27,
+        avatarChecked28,
+        avatarChecked29,
+        avatarChecked30
     ]
 };
