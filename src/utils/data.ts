@@ -56,6 +56,7 @@ export const getInitialGameState = (): GameState => {
             level,
             isCursed: true,
             friends
-        }))
+        })),
+        selectedNpc: null
     };
 };

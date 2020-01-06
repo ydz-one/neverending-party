@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Graph from 'react-graph-vis';
 import { StoreState } from '../reducers';
-import { GameState, GameStatus } from '../reducers/game';
+import { Npc } from '../reducers/game';
+import { selectNpc } from '../actions';
+
+interface AppProps {
+    npcs: Npc[];
+    selectNpc: typeof selectNpc;
+}
 
 const options = {
     height: '80vh',
@@ -20,13 +26,7 @@ const options = {
     }
 };
 
-const events = {
-    select: function(event: any) {
-        var { nodes, edges } = event;
-    }
-};
-
-const _Board = ({ npcs }: GameState): JSX.Element => {
+const _Board = ({ npcs, selectNpc }: AppProps) => {
     const nodes = npcs.map((npc, id) => ({
         id,
         label: `${npc.name} (lvl: ${npc.level})`,
@@ -37,7 +37,7 @@ const _Board = ({ npcs }: GameState): JSX.Element => {
     const edges: { to: number; from: number }[] = [];
     npcs.forEach((npc, id) => {
         npc.friends.forEach(friendId => {
-            edges.push({ to: id, from: friendId });
+            edges.push({ to: friendId, from: id });
         });
     });
 
@@ -46,9 +46,26 @@ const _Board = ({ npcs }: GameState): JSX.Element => {
         edges
     };
 
+    const events = {
+        select: function(event: any) {
+            const { nodes } = event;
+            console.log(nodes);
+            let npcId;
+            if (nodes && nodes.length) {
+                npcId = nodes[0];
+            }
+            selectNpc(npcId);
+        }
+    };
+
     return <Graph graph={graph} options={options} events={events} />;
 };
 
-const mapStateToProps = ({ game }: StoreState) => game;
+const mapStateToProps = ({ game }: StoreState): { npcs: Npc[] } => {
+    const { npcs } = game;
+    return {
+        npcs
+    };
+};
 
-export const Board = connect(mapStateToProps)(_Board);
+export const Board = connect(mapStateToProps, { selectNpc })(_Board);

@@ -12,6 +12,17 @@ code {
         monospace;
 }
 
+.action-card {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1;
+}
+
+.header-extra-stat {
+    display: inline-block;
+}
+
 .vis-network {
     height: 90vh;
 }

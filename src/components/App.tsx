@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Board } from './Board';
-import { Layout, PageHeader } from 'antd';
+import { Header } from './Header';
+import { ActionCard } from './ActionCard';
 
 class _App extends Component {
     render() {
         return (
             <div className="App">
-                <Layout>
-                    <Layout.Header>
-                        <PageHeader title="President Amy" />
-                    </Layout.Header>
-                    <Layout.Content className="board">
-                        <Board />
-                    </Layout.Content>
-                </Layout>
+                <Header />
+                <Board />
+                <ActionCard />
             </div>
         );
     }

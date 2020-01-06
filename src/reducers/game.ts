@@ -13,9 +13,10 @@ export interface GameState {
     score: number;
     player: Player;
     npcs: Npc[];
+    selectedNpc: number | undefined | null;
 }
 
-interface Player {
+export interface Player {
     name: string;
     avatarUrl: string;
     level: number;
@@ -24,7 +25,7 @@ interface Player {
     water: number;
 }
 
-interface Npc {
+export interface Npc {
     id: number;
     name: string;
     avatarUrl: string;
@@ -40,6 +41,11 @@ export const gameReducer = (
     switch (action.type) {
         case GameActionTypes.PlayBeerPong:
             return state;
+        case GameActionTypes.SelectNpc:
+            return {
+                ...state,
+                selectedNpc: action.payload
+            };
         case GameActionTypes.DrinkWater:
             return state;
         case GameActionTypes.Vomit:
